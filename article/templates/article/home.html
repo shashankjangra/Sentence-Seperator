@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>
+            Sentence Seperator
+        </title>
+    </head>
+    <body style="margin: 10%">
+        <h1>Upload</h1>
+        <br>
+        <br>
+        <form action = "/external" method="POST">
+            {% csrf_token %}
+            Input Text:
+            <input type="text"  name="param" required> <br> <br>
+            {{data_external}} <br> <br>
+            <!-- {{data1 | safe}} -->
+            <br> <br>
+            <input type="submit" value="Execute external Python Script">
+
+        </form>
+        <br>
+        <br>
+    </body>
+</html>

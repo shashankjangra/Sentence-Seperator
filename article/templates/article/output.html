@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>
+            Output
+        </title>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            .selected{
+                background-color: yellow;
+            }
+
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function highlighter() {
+                var toggle = document.getElementsByClassName("check")
+                if (toggle.checked){
+                    document.getElementsByName("sentence").style.backgroundColor = "yellow"
+                }
+                if (!toggle.checked){
+                    document.getElementById("sentence").style.backgroundColor = "white"
+                }
+            }
+        </script>
+        <h1>Sentences</h1>
+        <table>
+            <tr>
+                <th><h3> Sentences </h3></th>
+                <th><h3>Highlight</h3></th>
+            </tr>
+            {% for data in data1 %} 
+            {% if data.highlight %}
+            <tr>
+                <td id="sentence"> <mark> {{data.sentence}} </mark> </td>
+                <td> <input type="checkbox" class="check" onclick="highlighter()" checked > </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td id="sentence">  {{data.sentence}} </td>
+                <td> <input type="checkbox" class="check" onclick="highlighter()"> </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </body>
+</html>
